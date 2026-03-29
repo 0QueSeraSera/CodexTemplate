@@ -8,6 +8,7 @@
   - Constraints
   - Done-When
   - Open Questions
+- Perform this checkpoint as natural-language reasoning from user intent, not rule-based prompt parsing.
 - Ask for explicit user confirmation before running commands or editing files.
 - Keep proposed specs and roadmaps concise unless the user asks for detail.
 

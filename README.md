@@ -4,7 +4,7 @@ Reusable Codex CLI templates for an individual developer workflow with:
 
 - E2E-first validation (mock tests are fallback-only).
 - Stable vs active development context split (`docs/` vs `agent/`).
-- Prompt intent checkpoint before implementation.
+- Prompt intent checkpoint before implementation (natural-language policy in `AGENTS.md`, no regex parser hook).
 - Python environment command guard (`.venv` / `python3`, never bare `python`).
 
 This template is designed so you can use a custom `CODEX_HOME` and avoid editing `~/.codex` directly.

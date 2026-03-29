@@ -125,10 +125,9 @@ install_repo_files() {
   copy_with_policy "${TEMPLATE_ROOT}/repo/docs/AGENTS.override.md" "${abs_repo}/docs/AGENTS.override.md"
   copy_with_policy "${TEMPLATE_ROOT}/repo/agent/AGENTS.md" "${abs_repo}/agent/AGENTS.md"
   copy_with_policy "${TEMPLATE_ROOT}/repo/.codex/hooks.json" "${abs_repo}/.codex/hooks.json"
-  copy_with_policy "${TEMPLATE_ROOT}/repo/.codex/hooks/prompt_gate.py" "${abs_repo}/.codex/hooks/prompt_gate.py"
   copy_with_policy "${TEMPLATE_ROOT}/repo/.codex/hooks/python_env_guard.py" "${abs_repo}/.codex/hooks/python_env_guard.py"
 
-  run_cmd chmod +x "${abs_repo}/.codex/hooks/prompt_gate.py" "${abs_repo}/.codex/hooks/python_env_guard.py"
+  run_cmd chmod +x "${abs_repo}/.codex/hooks/python_env_guard.py"
 }
 
 while [[ $# -gt 0 ]]; do
@@ -198,4 +197,3 @@ log ""
 log "Setup complete."
 log "Launch Codex with:"
 log "  CODEX_HOME=\"${codex_home}\" codex --sandbox workspace-write --ask-for-approval on-request"
-

@@ -32,6 +32,10 @@ Useful flags:
 - `--no-repo` to skip repo-level files.
 - `--force` to overwrite existing files (with `.bak.<timestamp>` backups).
 
+If you are migrating from an older version of this template, use `--force` so
+`hooks.json` is updated; the installer also removes legacy
+`.codex/hooks/prompt_gate.py` automatically.
+
 ## 2) Manual setup (no `~/.codex` edits)
 
 Pick any path you control, for example:
@@ -64,9 +68,8 @@ mkdir -p ./docs ./agent ./.codex/hooks
 cp /path/to/CodexTemplate/repo/docs/AGENTS.override.md ./docs/AGENTS.override.md
 cp /path/to/CodexTemplate/repo/agent/AGENTS.md ./agent/AGENTS.md
 cp /path/to/CodexTemplate/repo/.codex/hooks.json ./.codex/hooks.json
-cp /path/to/CodexTemplate/repo/.codex/hooks/prompt_gate.py ./.codex/hooks/prompt_gate.py
 cp /path/to/CodexTemplate/repo/.codex/hooks/python_env_guard.py ./.codex/hooks/python_env_guard.py
-chmod +x ./.codex/hooks/*.py
+chmod +x ./.codex/hooks/python_env_guard.py
 ```
 
 Replace `/path/to/CodexTemplate` with:
@@ -83,6 +86,8 @@ Replace `/path/to/CodexTemplate` with:
   - Constraints
   - Done-When
   - Open Questions
+- This intent checkpoint is enforced through natural-language instructions in
+  `CODEX_HOME/AGENTS.md` (no regex-based prompt partition hook).
 - Codex should ask for your explicit confirmation before edits/commands.
 - Bare `python` or `pip` commands should be denied by the hook.
 - `docs/` guidance should bias toward stable/read-first behavior.
@@ -115,16 +120,8 @@ codex --sandbox workspace-write --ask-for-approval on-request
 
 ## 7) Optional strict mode
 
-If you want stricter prompt gating, edit `prompt_gate.py` to block vague prompts by returning:
+If you want stricter behavior, keep it in natural-language instructions in
+`CODEX_HOME/AGENTS.md`, for example:
 
-```json
-{
-  "hookSpecificOutput": {
-    "hookEventName": "UserPromptSubmit",
-    "permissionDecision": "deny",
-    "permissionDecisionReason": "Please confirm Goal/Context/Constraints/Done-When first."
-  }
-}
-```
-
-Current template defaults to non-blocking guidance (safer day-to-day).
+- "Do not run commands or edit files until the user confirms the intent checkpoint."
+- "If Goal/Context/Constraints/Done-When are unclear, ask concise clarifying questions first."
