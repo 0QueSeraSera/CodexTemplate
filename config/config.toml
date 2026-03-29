@@ -1,0 +1,22 @@
+# Codex config template for individual development.
+# Copy to: $CODEX_HOME/config.toml
+
+model = "gpt-5.4"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+personality = "pragmatic"
+plan_mode_reasoning_effort = "medium"
+
+# Let Codex load larger project instruction files.
+project_doc_max_bytes = 65536
+
+# Optional additional project doc names in repository folders.
+project_doc_fallback_filenames = ["AGENTS.override.md", "AGENT_GUIDE.md"]
+
+[features]
+codex_hooks = true
+
+[shell_environment_policy]
+# Inherit shell profile environment so `PATH`, virtualenv helpers, and aliases
+# are available when Codex executes commands.
+experimental_use_profile = true

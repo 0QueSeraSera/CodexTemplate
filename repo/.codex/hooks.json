@@ -1,0 +1,27 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/env python3 .codex/hooks/prompt_gate.py",
+            "statusMessage": "Preparing intent checkpoint"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/env python3 .codex/hooks/python_env_guard.py",
+            "statusMessage": "Checking Python command policy"
+          }
+        ]
+      }
+    ]
+  }
+}
