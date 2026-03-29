@@ -3,7 +3,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TEMPLATE_ROOT="${SCRIPT_DIR}"
-DEFAULT_CODEX_HOME="${HOME}/.codex_profiles/e2e_pragmatic"
+DEFAULT_CODEX_HOME="${HOME}/.codex"
 
 codex_home="${DEFAULT_CODEX_HOME}"
 install_system=1
@@ -19,7 +19,7 @@ Usage:
 
 Options:
   --codex-home PATH     Target CODEX_HOME profile path.
-                        Default: $HOME/.codex_profiles/e2e_pragmatic
+                        Default: $HOME/.codex
   --repo PATH           Target repository path. Repeatable.
   --no-system           Skip profile-level install (AGENTS.md + config.toml).
   --no-repo             Skip repo-level install.
@@ -30,7 +30,7 @@ Options:
 Examples:
   # Install system profile + one repo
   ./setup_codex_template.sh \
-    --codex-home "$HOME/.codex_profiles/e2e_pragmatic" \
+    --codex-home "$HOME/.codex" \
     --repo /path/to/repo
 
   # Install only repo templates for two repos

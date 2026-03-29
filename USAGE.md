@@ -7,7 +7,6 @@ From the template directory:
 ```bash
 chmod +x ./setup_codex_template.sh
 ./setup_codex_template.sh \
-  --codex-home "$HOME/.codex_profiles/e2e_pragmatic" \
   --repo /absolute/path/to/your/repo
 ```
 
@@ -15,7 +14,6 @@ For multiple repos, repeat `--repo`:
 
 ```bash
 ./setup_codex_template.sh \
-  --codex-home "$HOME/.codex_profiles/e2e_pragmatic" \
   --repo /repo/a \
   --repo /repo/b
 ```
@@ -36,12 +34,12 @@ If you are migrating from an older version of this template, use `--force` so
 `hooks.json` is updated; the installer also removes legacy
 `.codex/hooks/prompt_gate.py` automatically.
 
-## 2) Manual setup (no `~/.codex` edits)
+## 2) Manual setup (default `~/.codex`)
 
-Pick any path you control, for example:
+Use the default Codex workspace path:
 
 ```bash
-export CODEX_HOME="$HOME/.codex_profiles/e2e_pragmatic"
+export CODEX_HOME="$HOME/.codex"
 mkdir -p "$CODEX_HOME"
 ```
 
@@ -114,7 +112,7 @@ Ask Codex to add tests. It should prefer integration/E2E strategy and only use m
 ## 6) Recommended launch command
 
 ```bash
-CODEX_HOME="$HOME/.codex_profiles/e2e_pragmatic" \
+CODEX_HOME="$HOME/.codex" \
 codex --sandbox workspace-write --ask-for-approval on-request
 ```
 

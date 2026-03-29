@@ -7,14 +7,13 @@ Reusable Codex CLI templates for an individual developer workflow with:
 - Prompt intent checkpoint before implementation (natural-language policy in `AGENTS.md`, no regex parser hook).
 - Python environment command guard (`.venv` / `python3`, never bare `python`).
 
-This template is designed so you can use a custom `CODEX_HOME` and avoid editing `~/.codex` directly.
+This template applies to the default Codex workspace at `~/.codex` by default.
 
 Quick start:
 
 ```bash
 chmod +x ./setup_codex_template.sh
 ./setup_codex_template.sh \
-  --codex-home "$HOME/.codex_profiles/e2e_pragmatic" \
   --repo /absolute/path/to/your/repo
 ```
 
